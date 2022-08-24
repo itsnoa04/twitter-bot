@@ -1,9 +1,9 @@
 import * as functions from "firebase-functions";
-import { dbRef } from "../db";
+import { dbRef } from "../..";
 import twitterClient from "../twitter";
 import { CallbackURL } from "./auth";
 
-export const callback = async (
+export const callbackHandler = async (
   req: functions.https.Request,
   res: functions.Response
 ) => {
@@ -11,7 +11,7 @@ export const callback = async (
   const dbSnapshot = await dbRef.get();
   const { codeVerifier, state: storedState }: any = dbSnapshot.data();
 
-  if (state === storedState) {
+  if (state !== storedState) {
     throw new Error("State mismatch: " + JSON.stringify(state));
   }
 
