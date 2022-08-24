@@ -1,9 +1,8 @@
+import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
+export const auth = functions.https.onRequest((req, res) => {});
+export const callback = functions.https.onRequest((req, res) => {});
+export const like = functions.https.onRequest((req, res) => {});
+export const retweets = functions.https.onRequest((req, res) => {});
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+admin.initializeApp();
